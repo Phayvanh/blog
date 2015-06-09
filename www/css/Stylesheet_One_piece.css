@@ -1,0 +1,101 @@
+body{
+    /*background-color: #FF7A00;*/
+    background: url('../images/one-piece.jpg') fixed;
+    background-size: 100%;
+    font-family: 'Playfair Display', serif;
+}
+
+ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+form{
+    width: 500px;
+    box-shadow: 1px 1px 1px 1px #000;
+    padding: 10px;
+    margin: 0 auto;
+    background-color: #FFB700;
+}
+
+label{
+    display: inline-block;
+    width: 35%;
+}
+
+label, textarea{
+    vertical-align: top;
+
+}
+
+h1,h2{
+    text-align: center;
+    color: #000;
+    margin-top: 0;
+}
+
+a{
+    text-decoration: none;
+    color: #1D779A;
+}
+
+li{
+    margin-bottom: 10px;
+}
+
+li:last-child{
+    text-align: center;
+}
+
+input[type="submit"]{
+    margin-right: 50px;
+    padding: 5px 20px;
+    box-shadow: 1px 1px 1px #000;
+}
+
+a.btnAccueil{
+    background-color: #FFFFFF;
+    padding: 5px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px #000;
+    color: #4C4C4C;
+}
+
+section{
+    width: 700px;
+    margin: 0 auto 10px;
+    background-color: rgba(242,241,240,0.8);
+    padding: 10px;
+    box-shadow: 1px 1px 1px 1px #000000;
+    word-wrap: break-word;
+
+}
+
+img{
+    float: left;
+    width: 40%;
+    padding: 5px;
+}
+
+article:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.pagination{
+    text-align: center;
+}
+
+.pagination li{
+    display: inline-block;
+}
+
+.pagination a{
+    background-color: #F2F1F0;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+

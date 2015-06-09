@@ -1,0 +1,68 @@
+<main class="blog-post">
+<section>
+    <h2><a href="<?=$wwwUrl?>/post/?id=<?=$posts['Id']?>"><?=$posts['Title']?></a></h2>
+    <h4>Catégorie : <?=$posts['Category_Name']?></h4>
+
+    <article>
+        <?php if(empty($posts['Photo']) == false): ?>
+            <img src="<?=$wwwUrl?>/images/photos/<?=$posts['Photo']?>" alt="<?=$posts['PhotoTitle']?>">
+        <?php endif ?>
+        <p><?=htmlspecialchars($posts['Contents'],ENT_HTML5)?></p>
+        <!--la fonction permet d'echapper les caractères spéciaux pour la sécurité-->
+    </article>
+
+    <?php if(empty($taglist) == false) :?>
+        <h4><?=$taglist?></h4>
+    <?php endif ?>
+
+    <small>Rédiger par <?=$posts['FirstName']?> <?=$posts['LastName']?> le <?=$posts['Timestamp'] ?></small>
+</section>
+
+
+<hr>
+<?php if(empty($comments) == true):?>
+    <h4 class="blog-comment none">Il n'y a pas de commentaires actuellement..., n'hésitez pas à ajouter un nouvel article via le formulaire ci-dessous</h4>
+<?php else: ?>
+    <h2>Commentaires</h2>
+    <?php foreach($comments as $comment):?>
+        <section>
+        <ul class="blog-comment list">
+            <li><?=htmlspecialchars($comment['Contents'])?></li>
+            <?php if(empty($comment['WebsiteUrl']) == true) :?>
+            <li><small>Rédigé par <?=$comment['Name']?> le <?=$comment['Timestamp']?></small></li>
+            <?php else : ?>
+            <li><small>Rédigé par <a href="<?=$comment['WebsiteUrl']?>" target="_blank"><?=$comment['Name']?></a> le <?=$comment['Timestamp']?></small></li>
+            <?php endif ?>
+        </ul>
+        </section>
+    <?php endforeach ?>
+<?php endif ?>
+</main>
+<hr>
+
+
+<form method="post" action="<?=$wwwUrl?>/post/comment/create.php">
+        <input type="hidden" name="postId" value="<?=$_GET['id']?>">
+        <ul>
+            <li>
+                <label for="name">Indiquez un Pseudo : </label>
+                <input type="text" name="name" id="name">
+            </li>
+            <li>
+                <label for="email">Email : </label>
+                <input type="email" name="email" id="email">
+            </li>
+            <li>
+                <label for="url">Site Web : </label>
+                <input type="text" name="url" id="url" value="http://">
+            </li>
+            <li>
+                <label for="contents">Commentaire : </label>
+                <textarea name="contents" id="contents"></textarea>
+            </li>
+            <li>
+                <input type="submit" name="enregistrer" value="enregistrer">
+                <a class="btnAccueil" href="<?=$wwwUrl?>">Accueil</a>
+            </li>
+        </ul>
+</form>

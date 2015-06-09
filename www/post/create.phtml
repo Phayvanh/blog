@@ -1,0 +1,57 @@
+<h2>Formulaire</h2>
+
+<form method="post" action="create.php" enctype="multipart/form-data">
+    <ul>
+        <li>
+            <label for="blog">Blog : </label>
+            <select name="blog" id="blog">
+                <?php foreach($blogs as $blog):?>
+                <option value="<?=$blog['Id']?>">
+                    <?=$blog['Title']?>
+                </option>
+                <?php endforeach ?>
+            </select>
+        </li>
+        <li>
+            <label for="author">Auteur : </label>
+            <select name="author" id="author">
+                <?php foreach($authors as $author):?>
+                <option value="<?=$author['Id']?>">
+                    <?=$author['FirstName']?>
+                    <?=$author['LastName']?>
+                </option>
+                <?php endforeach ?>
+            </select>
+        </li>
+        <li>
+            <label for="title">Titre : </label>
+            <input type="text" name="title" id="title">
+        </li>
+        <li>
+        <label for="contents">Contenu : </label>
+        <textarea id="contents" name="contents"></textarea>
+        </li>
+        <li>
+            <label for="photo">Ajouter une photo : </label>
+            <input type="file" name="photo" id="photo">
+        </li>
+        <li>
+            <label for="category">Categorie : </label>
+            <select name="category" id="category">
+                <?php foreach($categories as $category):?>
+                <option value="<?=$category['Id']?>">
+                    <?=$category['Name']?>
+                </option>
+                <?php endforeach ?>
+            </select>
+        </li>
+        <li>
+            <label for="tags">Tags : </label>
+            <input type="text" name="tags" id="tags">
+        </li>
+        <li>
+            <input type="submit" name="enregistrer" value="enregistrer">
+            <a class="btnAccueil" href="<?=$wwwUrl?>/index.php">Accueil</a>
+        </li>
+    </ul>
+</form>

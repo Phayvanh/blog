@@ -1,0 +1,57 @@
+<nav class="blog-menu">
+    <ul>
+        <li>
+            <h2><a href="<?=$wwwUrl?>/post/create.php">Cliquez ici</a> pour ajouter un nouvel article</h2>
+        </li>
+        <li>Thème :
+            <select id="js-theme"><!-- on ajoute ici l'évènement au select-->
+            <?php foreach($themes as $theme):?>
+                <?php if($theme['Id'] == $blogtheme): ?>
+                <option selected value="<?=$theme['Id']?>" >
+                    <?=$theme['Name']?>
+                </option>
+                <?php else : ?>
+                <option value="<?=$theme['Id']?>">
+                    <?=$theme['Name']?>
+                </option>
+                <?php endif ?>
+            <?php endforeach ?>
+        </select>
+        </li>
+    </ul>
+</nav>
+
+<main class="blog-post list">
+<?php if(empty($posts) == true):?>
+
+    <h2>Le Blog est vide..., <a href="<?=$wwwUrl?>/post/create.php">cliquez ici</a> pour ajouter un nouvel article</h2>
+
+<?php else: ?>
+
+    <?php foreach($posts as $post):?>
+        <section>
+            <h2><a href="<?=$wwwUrl?>/post/?id=<?=$post['Id']?>"><?=$post['Title']?></a></h2>
+            <h4>Catégorie : <?=$post['Category_Name']?></h4>
+
+            <article>
+                <?=htmlspecialchars(substr($post['Contents'],0,250),ENT_HTML5)?>
+<!--la fonction permet d'echapper les caractères spéciaux-->
+            </article>
+
+            <small>Rédiger par <?=$post['FirstName']?> <?=$post['LastName']?> le <?=$post['Timestamp'] ?></small>
+            <small>commentaires : <?=$post['CommentCount']?></small>
+        </section>
+    <?php endforeach ?>
+<?php endif ?>
+</main>
+
+
+<ul class="blog-pages">
+    <?php if($page != $pagePrevious) :?>
+    <li class="blog-page-previous"><a href="<?=$wwwUrl?>/index.php?page=<?=$pagePrevious?>">&lt;&lt; page précédente</a></li>
+     <?php endif ?>
+     <?php if($page != $pageNext) :?>
+     <li class="blog-page-next"><a href="<?=$wwwUrl?>/index.php?page=<?=$pageNext?>">page suivante &gt;&gt;</a></li>
+     <?php endif ?>
+</ul>
+
