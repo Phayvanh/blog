@@ -40,8 +40,6 @@ $theme = new Model_Theme();
 $themes = $theme->listAll();
 $stylesheet = $theme->getStylesheetForBlog(BLOG_ID);
 
-$comment = new Model_Comment();
-
 //on affiche la vue
 $template = 'index.phtml';
 include "$wwwPath/layout.phtml";
